@@ -1,0 +1,117 @@
+Variation No.2
+
+#Rule 1-->Check for the sorted half
+#Rule 2-->Check target exists in the sorted half
+----------------------Search in Rotated Sorted Array-----------------------
+def RotatedSearch(arr,key):
+    low=0
+    high=len(arr)-1
+    while(low<=high):
+        mid=(low+high)//2
+        if(arr[mid]==key):
+            return mid
+        #check left half is sorted or not
+        if(arr[low]<=arr[mid]):
+            #check ele exists in sorted left half
+            if(arr[low]<=key<=arr[mid]):
+                high=mid-1
+            else:
+                low=mid+1
+        #check right half is sorted or not
+        if(arr[mid]<=arr[high]):
+            #check ele exists in sorted right half
+            if(arr[mid]<=key<=arr[high]):
+                low=mid+1
+            else:
+                high=mid-1
+    return -1
+arr=list(map(int,input().split()))
+key=int(input())
+print(RotatedSearch(arr,key))
+
+Output:
+7 8 9 1 2 3 4 5
+8
+1
+
+-------------------------Search in Rotated Sorted Array  2---------------------
+def RotatedSearch(arr,key):
+    low=0
+    high=len(arr)-1
+    while(low<=high):
+        mid=(low+high)//2
+        if(arr[mid]==key):
+            return True
+        if(arr[mid]==arr[high]):
+            low+=1
+            high-=1
+        #check left half is sorted or not
+        elif(arr[low]<=arr[mid]):
+            #check ele exists in sorted left half
+            if(arr[low]<=key<=arr[mid]):
+                high=mid-1
+            else:
+                low=mid+1
+        #check right half is sorted or not
+        elif(arr[mid]<=arr[high]):
+            #check ele exists in sorted right half
+            if(arr[mid]<=key<=arr[high]):
+                low=mid+1
+            else:
+                high=mid-1
+    return False
+arr=list(map(int,input().split()))
+key=int(input())
+print(RotatedSearch(arr,key))
+
+Output:
+7 8 1 1 2 2 2 3 3 4 4 5
+2
+True
+
+
+--------------------Sorted and Rotated Minimum------------------------
+def findMin(arr):
+    low=0
+    high=len(arr)-1
+    ans=float("inf")
+    while(low<=high):
+        mid=(low+high)//2
+        #left half
+        if(arr[low]<=arr[mid]):
+            if(arr[low]<=ans):
+                ans=arr[low]
+            low=mid+1
+            #right half
+        elif(arr[mid]<=arr[high]):
+            if(arr[mid]<=ans):
+                ans=arr[mid]
+            high=mid-1
+    return ans
+arr=list(map(int,input().split()))    
+print(findMin(arr))  
+
+
+           
+--------------------Find Kth Rotation----------------------------DLL&Dictionary
+def findKth(arr):
+    low=0
+    high=len(arr)-1
+    ans=float("inf")
+    min_index=0
+    while(low<=high):
+        mid=(low+high)//2
+        if(arr[low]<=arr[mid]):
+            if(arr[low]<=ans):
+                ans=arr[low]
+                min_index=low
+            low=mid+1
+        elif(arr[mid]<=arr[high]):
+            if(arr[mid]<=ans):
+                ans=arr[mid]
+                min_index=mid
+            high=mid-1
+    return min_index
+arr=list(map(int,input().split()))    
+print(findKth(arr))
+
