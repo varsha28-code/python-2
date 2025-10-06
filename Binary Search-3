@@ -1,0 +1,50 @@
+Variation No.3(B.S on answers)
+----------------------Square Root----------------------      
+def floorSqrt(n):
+    low=0
+    high=n
+    while(low<=high):
+        mid=(low+high)//2
+        if(mid*mid>n):
+            high=mid-1
+        else:
+            low=mid+1
+    return high
+n=int(input())
+print(floorSqrt(n))
+
+----------------------Find nth root of m----------------
+def nthRoot(n,m):
+    low=1
+    high=m
+    while(low<=high):
+        mid=(low+high)//2
+        if(mid**n==m):
+            return mid
+        elif(mid**n>m):
+            high=mid-1
+        else:
+            low=mid+1
+    return -1
+n=int(input())
+m=int(input())
+print(nthRoot(n,m))
+            
+------------------Smallest Divisor----------------------(Koko eating Bananas)
+from math import ceil
+def smallestDivisor(arr,k):
+    low=1
+    high=max(arr)
+    while(low<=high):
+        div=(low+high)//2
+        Sum=0
+        for nums in arr:
+            Sum+=ceil(num/div)
+        if(Sum>k):
+            low=div+1
+        else:
+            high=div-1
+    return low
+arr=list(map(int,input().split()))
+k=int(input())
+print(smallestDivisor(arr,k))
