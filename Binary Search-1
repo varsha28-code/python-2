@@ -49,6 +49,11 @@ arr=list(map(int,input().split()))
 target=int(input())
 print(lowerBound(arr,target))
 
+Output:
+1 1 2 3 4 5 6 7
+2
+2
+
 
 ---------------------------Upper Bound----------------------------
 def upperBound(arr,target):
@@ -67,6 +72,11 @@ arr=list(map(int,input().split()))
 target=int(input())
 print(upperBound(arr,target))
 
+Output:
+1 1 2 3 4 5 6 7
+2
+3
+
 ---------------------------Floor in A Sorted array----------------------------
 def findFloor(arr,target):
     low=0
@@ -84,37 +94,55 @@ arr=list(map(int,input().split()))
 target=int(input())
 print(findFloor(arr,target))
 
+Output:
+1 2 3 4 5 6 7
+2
+1
+
+
 #First position=lower bound
 #Last position=upper bound-1
 
 ------------------------Find First and Last Position in Sorted Array------------------------------------------------------------------------------
-def 
+def lowerBound(arr,target):
     low=0
-    high=len(arr)-1
+    high=len(arr) - 1
     ans=len(arr)
-    while(low<=high):
+    while low<=high:
         mid=(low+high)//2
-        if(arr[mid]>=target):
+        if arr[mid]>=target:
             ans=mid
-            high=mid-1
+            high=mid - 1
         else:
             low=mid+1
     return ans
+def higherBound(arr,target):
     low=0
     high=len(arr)-1
     ans=len(arr)
-    while(low<=high):
+    while low<=high:
         mid=(low+high)//2
-        if(arr[mid]>target):
+        if arr[mid] > target:
             ans=mid
-            high=mid-1
+            high=mid - 1
         else:
-            low=mid+1
+            low=mid + 1
     return ans
-first=lowerBound(arr,target)
-last=higherBound(arr,target)
-return[first,last]
+def findFirstAndLast(arr,target):
+    first=lowerBound(arr,target)
+    last=higherBound(arr,target)-1
+    if first<=last and last<len(arr) and arr[first]==target and arr[last]==target:
+        return [first,last]
+    else:
+        return [-1,-1]
+arr=list(map(int,input()))
+target=int(input())
+print(findFirstAndLast(arr, target))
 
+Output:
+1 2 2 2 3 4 5
+2
+1 3
 
 
 
