@@ -1,0 +1,84 @@
+-------------Next greatest elemnent(NGE)-------------------arr=[6,0,8,1,3]  ans=[8,8,-1,3,-1](aestroid--collision)
+arr=[6,0,8,1,3]
+n=len(arr)
+ans=[]       #T.C:O(N**2)
+for i in range(0,n):
+    flag=1
+    for j in range(i+1,n):
+        if(arr[j]>arr[i]):
+            ans.append(arr[j])
+            flag=0
+            break
+    if(flag==1):
+        ans.append(-1)
+print(ans)
+
+#Time complexity is very high so we should optimize the above code....
+#Optimized Code:Using stack Data structure to solve the problem
+
+
+arr=list(map(int,input().split()))
+stack=[]
+n=len(arr)
+ans=[0]*n
+for i in range(n-1,-1,-1):
+    currEle=arr[i]
+    while(len(stack)!=0 and stack[-1]<=currEle):
+        stack.pop()
+    if(len(stack)==0):
+        ans[i]=-1
+    else:
+        ans[i]=stack[-1]
+    stack.append(currEle)
+print(ans)
+
+--------------Previous greatest element----------------  
+arr=list(map(int,input().split()))
+stack=[]
+n=len(arr)
+ans=[0]*n
+for i in range(0,n):
+    currEle=arr[i]
+    while(len(stack)!=0 and stack[-1]<=currEle):
+        stack.pop()
+    if(len(stack)==0):
+        ans[i]=-1
+    else:
+        ans[i]=stack[-1]
+    stack.append(currEle)
+print(ans)
+
+
+------------Previous smallest element------------------
+arr=list(map(int,input().split()))
+stack=[]
+n=len(arr)
+ans=[0]*n
+for i in range(0,n):
+    currEle=arr[i]
+    while(len(stack)!=0 and stack[-1]>=currEle):
+        stack.pop()
+    if(len(stack)==0):
+        ans[i]=-1
+    else:
+        ans[i]=stack[-1]
+    stack.append(currEle)
+print(ans)
+
+----------------Next smallest element-------------------
+arr=list(map(int,input().split()))
+stack=[]
+n=len(arr)
+ans=[0]*n
+for i in range(n-1,-1,-1):
+    currEle=arr[i]
+    while(len(stack)!=0 and stack[-1]>=currEle):
+        stack.pop()
+    if(len(stack)==0):
+        ans[i]=-1
+    else:
+        ans[i]=stack[-1]
+    stack.append(currEle)
+print(ans)
+
+
