@@ -1,0 +1,20 @@
+from collections import deque
+def zigzaglevelOrder(root):
+    ans=[]
+    level_count=0
+    q=deque([root])
+    while(len(q)>0):
+        level=[]
+        for i in range(len(q)):
+            node=q.popleft()
+            if(node.left):
+                q.append(node.left)
+            if(node.right):
+                q.append(node.right)
+            level.append(node.val)
+        if(level_count%2==1):   #odd level
+            ans.append(level[::-1])  #reverse list so we get(R to L)
+        else:
+            ans.append(level)
+        level_count+=1
+    return ans
