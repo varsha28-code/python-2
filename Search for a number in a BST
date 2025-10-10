@@ -1,0 +1,12 @@
+class Node:
+    def __init__(self,data):
+        self.left=None
+        self.data=data
+        self.right=None
+def searchBST(root,val):
+    while(root!=None and root.val!=val):
+        if(val<root.val):
+            root=root.left
+        elif(val>root.val):
+            root=root.right
+    return root
