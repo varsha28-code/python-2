@@ -1,0 +1,28 @@
+class Node:
+    def __init__(self,data):
+        self.left=None
+        self.data=data
+        self.right=None
+def createBST(arr):
+    root=None
+    for data in arr:
+        if(root==None):
+            root=Node(data)
+        else:
+            curr=root
+            while(True):
+                if(data<curr.data):
+                    if(curr.left==None):
+                        curr.left=Node(data)
+                        break
+                    else:
+                        curr=curr.left
+                elif(data>curr.data):
+                    if(curr.right==None):
+                        curr.right=Node(data)
+                        break
+                    else:
+                        curr=curr.right
+    print(root.left.data) 
+arr=list(map(int,input().split()))
+createBST(arr)
