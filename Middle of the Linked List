@@ -1,11 +1,6 @@
  Hare & Tortoise (or) Slow and fast pointer technique.
 
-class Solution:
-    def middleNode(self, head):
-        """
-        :type head: Optional[ListNode]
-        :rtype: Optional[ListNode]
-        """
+def middleNode(self, head):
         slow=head
         fast=head
         while(fast!=None and fast.next!=None):
