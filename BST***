@@ -1,8 +1,3 @@
-class Node:
-    def __init__(self,data):
-        self.left=None
-        self.data=data
-        self.right=None
 def createBST(arr):
     root=None
     for data in arr:
@@ -23,6 +18,4 @@ def createBST(arr):
                         break
                     else:
                         curr=curr.right
-    print(root.left.data) 
-arr=list(map(int,input().split()))
-createBST(arr)
+    return root.left.data 
