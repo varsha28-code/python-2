@@ -1,0 +1,21 @@
+class Solution:
+    def findMin(self, arr):
+        #complete the function here
+        low = 0
+        high = len(arr) - 1
+        ans = float("inf")
+        while low <= high:
+            mid = (low + high) // 2
+            # If the current segment is already sorted
+            if arr[low] <= arr[high]:
+                ans = min(ans, arr[low])
+                break  # because nums[low] is the minimum in this range
+            # Left half is sorted
+            if arr[low] <= arr[mid]:
+                ans = min(ans, arr[low])
+                low = mid + 1
+            # Right half is sorted
+            else:
+                ans = min(ans, arr[mid])
+                high = mid - 1
+        return ans
