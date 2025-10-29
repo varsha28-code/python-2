@@ -1,0 +1,31 @@
+class Solution(object):
+    def minDays(self, bloomDay, m, k):
+        """
+        :type bloomDay: List[int]
+        :type m: int
+        :type k: int
+        :rtype: int
+        """
+        if m * k > len(bloomDay):
+            return -1
+        low = min(bloomDay)
+        high = max(bloomDay)
+        ans = -1
+        while low <= high:
+            day = (low + high) // 2
+            bloomed_flowers = 0
+            no_of_bouquets = 0
+            for num in bloomDay:
+                if num <= day:
+                    bloomed_flowers += 1
+                    if bloomed_flowers == k:
+                        no_of_bouquets += 1
+                        bloomed_flowers = 0
+                else:
+                    bloomed_flowers = 0  
+            if no_of_bouquets >= m:
+                ans = day
+                high = day - 1 
+            else:
+                low = day + 1 
+        return ans
