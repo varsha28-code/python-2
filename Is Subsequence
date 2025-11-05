@@ -1,0 +1,11 @@
+A subsequence means:
+The characters of s appear in t in the same order,
+but not necessarily next to each other.
+
+class Solution(object):
+    def isSubsequence(self, s, t):
+        i = 0
+        for char in t:
+            if i < len(s) and s[i] == char:
+                i += 1
+        return i == len(s)
